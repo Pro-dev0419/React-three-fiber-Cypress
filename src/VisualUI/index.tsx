@@ -84,55 +84,53 @@ function FlowViz() {
     const [count, setCount] = useState(50);
 
 
-    useEffect(() => {
 
-        setNodes([
-            {
-                id: 'hero',
-                type: 'hero',
-                position: { x: 800, y: 180 },
-                style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
-                data: { color, zoom, shape, count, label: 'Output' },
+    setNodes([
+        {
+            id: 'hero',
+            type: 'hero',
+            position: { x: 800, y: 180 },
+            style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
+            data: { color, zoom, shape, count, label: 'Output' },
+        },
+        {
+            id: 'color',
+            type: 'colorpicker',
+            data: { color, onChange: setColor, label: 'Shape Color' },
+            style: { ...nodeStyle, width: 200 },
+            position: { x: 300, y: 200 },
+        },
+        {
+            id: 'zoom',
+            type: 'slider',
+            data: { value: zoom, min: 0, max: 40, onChange: setZoom, label: 'Zoom Level' },
+            style: { ...nodeStyle, width: 200 },
+            position: { x: 300, y: 300 },
+        },
+        {
+            id: 'shape',
+            type: 'switcher',
+            data: {
+                value: shape,
+                options: ['sphere', 'cube', 'pyramid'],
+                onChange: setShape,
+                label: 'Shape Type',
             },
-            {
-                id: 'color',
-                type: 'colorpicker',
-                data: { color, onChange: setColor, label: 'Shape Color' },
-                style: { ...nodeStyle, width: 200 },
-                position: { x: 300, y: 200 },
+            style: { ...nodeStyle, width: 200 },
+            position: { x: 300, y: 100 },
+        },
+        {
+            id: 'number',
+            type: 'count',
+            data: {
+                value: count,
+                onChange: setCount,
+                label: 'Shape Count',
             },
-            {
-                id: 'zoom',
-                type: 'slider',
-                data: { value: zoom, min: 0, max: 40, onChange: setZoom, label: 'Zoom Level' },
-                style: { ...nodeStyle, width: 200 },
-                position: { x: 300, y: 300 },
-            },
-            {
-                id: 'shape',
-                type: 'switcher',
-                data: {
-                    value: shape,
-                    options: ['sphere', 'cube', 'pyramid'],
-                    onChange: setShape,
-                    label: 'Shape Type',
-                },
-                style: { ...nodeStyle, width: 200 },
-                position: { x: 300, y: 100 },
-            },
-            {
-                id: 'number',
-                type: 'count',
-                data: {
-                    value: count,
-                    onChange: setCount,
-                    label: 'Shape Count',
-                },
-                style: { ...nodeStyle, width: 200 },
-                position: { x: 300, y: 400 },
-            },
-        ]);
-    }, [color, count, shape, zoom, setNodes]);
+            style: { ...nodeStyle, width: 200 },
+            position: { x: 300, y: 400 },
+        },
+    ]);
 
     useEffect(() => {
         setNodes((nds) =>
