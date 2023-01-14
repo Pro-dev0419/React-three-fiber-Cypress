@@ -132,7 +132,7 @@ function FlowViz() {
                 position: { x: 300, y: 400 },
             },
         ]);
-    }, []);
+    }, [color, count, shape, zoom, setNodes]);
 
     useEffect(() => {
         setNodes((nds) =>
