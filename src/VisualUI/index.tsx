@@ -132,7 +132,7 @@ function FlowViz() {
                 position: { x: 300, y: 400 },
             },
         ]);
-    }, []);
+    }, [color, count, shape, zoom, setNodes]);
 
     useEffect(() => {
         setNodes((nds) =>
@@ -146,7 +146,7 @@ function FlowViz() {
                 return n;
             })
         );
-    }, [color]);
+    }, [color, setNodes]);
 
     useEffect(() => {
         setNodes((nds) =>
@@ -160,7 +160,7 @@ function FlowViz() {
                 return n;
             })
         );
-    }, [zoom]);
+    }, [zoom, setNodes]);
 
     useEffect(() => {
         setNodes((nds) =>
@@ -174,7 +174,7 @@ function FlowViz() {
                 return n;
             })
         );
-    }, [shape]);
+    }, [shape, setNodes]);
 
     useEffect(() => {
         setNodes((nds) =>
@@ -188,7 +188,7 @@ function FlowViz() {
                 return n;
             })
         );
-    }, [count]);
+    }, [count, setNodes]);
 
     return (
         <ChakraProvider>
@@ -208,10 +208,12 @@ function FlowViz() {
     );
 }
 
-export default () => {
+const VisualUI = () => {
     return (
         <ReactFlowProvider>
             <FlowViz />
         </ReactFlowProvider>
     );
 }
+
+export default VisualUI;
